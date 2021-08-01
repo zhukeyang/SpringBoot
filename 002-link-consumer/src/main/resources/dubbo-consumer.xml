@@ -1,0 +1,28 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+        http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+<!--    声明服务消费之的名称：保证唯一性-->
+    <dubbo:application name="002-link-consumer"/>
+<!--
+        引用远程服务接口：
+        id:远程服务接口对象的名称
+        interface:调用远程接口的全限定类名
+        url:访问服务器接口的地址
+        registry:不适用注册中心,值为:N/A
+
+-->
+    <dubbo:reference id="userService"
+                     interface="com.wkcto.dubbo.service.UserService"
+                     url="dubbo://localhost:20880"
+                     registry="N/A"/>
+
+
+
+</beans>
